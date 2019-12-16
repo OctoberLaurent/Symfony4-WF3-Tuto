@@ -64,6 +64,6 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 ```bash
 yarn dev // or
-yarn watch // real-time comilation
+yarn watch // real-time compilation
 ```
 
