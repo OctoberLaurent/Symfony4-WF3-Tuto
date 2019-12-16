@@ -1,4 +1,4 @@
-# Installation de Webpack encore
+# Installation de Webpack encore & Bootstrap
 
 ```
 composer require sumfony/flex
