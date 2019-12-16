@@ -5,7 +5,7 @@ composer require sumfony/flex
 composer require encore
 yarn install
 ```
-Installation de Bootstrap et Jquery 
+Installation de Bootstrap, Popper et Jquery 
 ```bash
 yarn add bootstrap --dev
 yarn add jquery popper.js --dev
