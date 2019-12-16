@@ -11,7 +11,7 @@ yarn add bootstrap --dev
 yarn add jquery popper.js --dev
 yarn add jquery
 ```
-```javascrypt
+```js
 // assets>js>app.js
 /*
  * Welcome to your app's main JavaScript file!
