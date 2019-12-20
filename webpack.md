@@ -1,7 +1,7 @@
 # Installation de Webpack encore & Bootstrap
 
 ```
-composer require sumfony/flex
+composer require symfony/flex
 composer require encore
 yarn install
 ```
