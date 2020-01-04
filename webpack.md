@@ -1,4 +1,4 @@
-# Installation de Webpack encore & Bootstrap
+# Install Webpack encore & Bootstrap
 
 ```
 composer require symfony/flex
@@ -60,6 +60,13 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
         {% endblock %}
     </body>
 </html>
+```
+For enable jQuery
+```js
+//**** enable uncomment this
+.autoProvidejQuery()
+//****
+
 ```
 
 ```bash
