@@ -30,24 +30,49 @@ private $mailer;
  */
 private $renderer;
 
-public function __construct(\Swift_Mailer $mailer, Environment $renderer)
-{
-    $this->mailer = $mailer;
-    $this->renderer = $renderer;
-}
-public function notify($title,$from, $to )
-{
+    public function __construct(\Swift_Mailer $mailer, Environment $renderer)
+    {
+        $this->mailer = $mailer;
+        $this->renderer = $renderer;
+    }
 
-    $content = (new \Swift_Message($title))
-        ->setFrom($from)
-        ->setTo($to)
-        ->setBody($this->renderer->render('emails/mail.html.twig', [
-            'url' =>  $_SERVER['HTTP_HOST'],
-        ]), 'text/html');
-    
-    $this->mailer->send($content);
-}
+    public function notify($title,$from, $to )
+    {
+
+        $content = (new \Swift_Message($title))
+            ->setFrom($from)
+            ->setTo($to)
+            ->setBody($this->renderer->render('emails/mail.html.twig', [
+                'url' =>  $_SERVER['HTTP_HOST'],
+            ]), 'text/html');
+
+        $this->mailer->send($content);
+    }
 }
 ```
+Nous allons avoir besoin d'une vue pour permettre la mise en page de notre email:
+créons dans le dossier template _emails/mail.html.twig_
 
+```
+## ici le code de la mise en page de notre mail ##
+
+```
+
+Dans notre contrôleur :
+
+```php
+/**
+     * @Route("/send", name="send")
+     */
+    public function send(SendEmail $mailer){
+        
+     $mailer->notify('titre','test@yazap.net', 'laurent@lepl.at' );
+
+    return $this->render('default/send.html.twig', [
+            
+        ]);
+
+    }
+ ```
+ 
 
