@@ -9,7 +9,7 @@ composer require symfony/swiftmailer-bundle
 configuration du .env
 
 ```yaml
-MAILER_URL=smtp://mail.yazap.net:465?encryption=ssl&auth_mode=login&username=test@yazap.net&password=}RFRrfZp3*M7
+MAILER_URL=smtp://mail.yazap.net:465?encryption=ssl&auth_mode=login&username=test@yazap.net&password=*mot*de*passe*
 ```
 
 **Céation d'un dossier 'Service' dans le dossier src.**
