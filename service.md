@@ -2,7 +2,7 @@
 
 Avant toute chose pour les besoins nous allons installer la dépendance swiftmailer
 
-```
+```bash
 composer require symfony/swiftmailer-bundle
 ```
 
