@@ -1,12 +1,12 @@
 # Création d'un service d'envoi de mail:
 
-Avant toute chose pour les besoins nous allons installer la dépendance swiftmailer
+Avant toute chose pour les besoins nous allons installer la dépendance **swiftmailer**
 
 ```bash
 composer require symfony/swiftmailer-bundle
 ```
 
-configuration du .env
+configuration du **.env**
 
 ```yaml
 MAILER_URL=smtp://mail.yazap.net:465?encryption=ssl&auth_mode=login&username=test@yazap.net&password=*mot*de*passe*
