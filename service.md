@@ -6,7 +6,7 @@ Avant toute chose pour les besoins nous allons installer la dépendance **swiftm
 composer require symfony/swiftmailer-bundle
 ```
 
-configuration du **.env**
+configuration du **.env** pour envoi de mail en smtp
 
 ```yaml
 MAILER_URL=smtp://mail.yazap.net:465?encryption=ssl&auth_mode=login&username=test@yazap.net&password=*mot*de*passe*
