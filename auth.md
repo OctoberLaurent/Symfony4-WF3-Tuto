@@ -459,7 +459,7 @@ $builder
 
 le formualaire est présenté dans cette vue :
 
-⚠ Il manque des mises en forme de certain champs.
+⚠ Il manque des mises en forme de certains champs.
 
 ```twig
 {% extends 'base.html.twig' %}
