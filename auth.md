@@ -456,3 +456,8 @@ $builder
     ])
 ;
 ```
+
+dans LoginFormAuthenticator.php décommenter celle ligne et remplacer la route par une route valide.
+```php
+return new RedirectResponse($this->urlGenerator->generate('private'));
+```
