@@ -457,6 +457,72 @@ $builder
 ;
 ```
 
+le formualaire est présenté dans cette vue :
+
+⚠ Il manque des mises en forme de certain champs.
+
+```twig
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'class': "user"} }) }}
+
+<div class="container bg-white mt-5 p-3">
+    <h1>S'enregistrer</h1>
+    <div class="row">
+        {# form firstName #}
+        <div class="col-6 mt-1">
+        {{ form_label(form.firstName) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_errors(form.firstName) }}
+        {{ form_widget(form.firstName) }}
+        </div>
+        {# form lastName #}
+        <div class="col-6 mt-1">
+        {{ form_label(form.lastName) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_errors(form.lastName) }}
+        {{ form_widget(form.lastName) }}
+        </div>
+        {# form email #}
+        <div class="col-6 mt-1">
+        {{ form_label(form.email) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+        </div>
+        {# form password #}
+        <div class="col-6 mt-1">
+        {{ form_label(form.password.first) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_errors(form.password.first) }}
+        {{ form_widget(form.password.first) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_label(form.password.second) }}
+        </div>
+        <div class="col-6 mt-1">
+        {{ form_errors(form.password.second) }}
+        {{ form_widget(form.password.second) }}
+        </div>
+        </div>
+        <div class="col-12 text-right pr-5">
+        {{ form_rest(form) }}
+        </div>
+     
+</div>
+
+{% endblock %}
+
+```
+
 dans LoginFormAuthenticator.php décommenter celle ligne et remplacer la route par une route valide.
 ```php
 return new RedirectResponse($this->urlGenerator->generate('private'));
