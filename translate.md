@@ -16,6 +16,25 @@ framework:
         default_path: '%kernel.project_dir%/translations'
 ```
 
+
+```yaml 
+# config/services.yaml
+parameters:
+    appTitle: 'OccazMalin'
+    locale: en
+    locales: en|fr
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+        bind:
+            $locales: '%locales%'
+            $defaultLocale: '%locale%'
+```
+
 [Lien vers la documentation sur la création d'un fichier dictionnaire ](https://symfony.com/doc/current/translation/message_format.html)
 
 ```yaml
