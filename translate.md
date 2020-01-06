@@ -52,3 +52,19 @@ Exemple dans un controleur :
 ```php
 $translated = $translator->trans('Hello '.$name);
 ```
+
+```php
+    /**
+     * @Route("/{_locale}", name="homepage", methods={"HEAD","GET"}, defaults={"_locale": "en"}, requirements={"_locale": "en|fr"})
+     */
+    public function index(Request $request, LanguagesService $languages)
+    {
+        // dump( "getAcceptedLanguages", $languages->getAcceptedLanguages() );
+        // dump( "getMainLanguage", $languages->getMainLanguage() );
+        // dump( "getMainLocale", $languages->getMainLocale() );
+        // dump( "getMainRegion", $languages->getMainRegion() );
+        // exit;
+        $locale = $request->getLocale();
+        return $this->redirectToRoute('ads:index', ['_locale' => "en"]);
+    }
+```
