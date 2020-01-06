@@ -20,7 +20,7 @@ framework:
 ```yaml 
 # config/services.yaml
 parameters:
-    appTitle: 'OccazMalin'
+    appTitle: 'titreDuSite'
     locale: en
     locales: en|fr
 
