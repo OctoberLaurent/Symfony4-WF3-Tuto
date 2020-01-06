@@ -20,7 +20,7 @@ framework:
 
 ```yaml
 # messages.en.yaml
-Hello: 'Bojour'
+Hello: 'Bonjour'
 ```
 
 Exemple dans twig :
