@@ -14,5 +14,4 @@ framework:
         default_path: '%kernel.project_dir%/translations'
 ```
 
-[lien vers la documentation sur la création d'un fichier dictionnaire ]
-(https://symfony.com/doc/current/translation/message_format.html)
+[lien vers la documentation sur la création d'un fichier dictionnaire ](https://symfony.com/doc/current/translation/message_format.html)
