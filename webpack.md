@@ -68,7 +68,7 @@ For enable jQuery
 //****
 
 ```
-
+webpack.config.js
 ```bash
 yarn dev // or
 yarn watch // real-time compilation
