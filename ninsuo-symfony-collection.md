@@ -84,6 +84,24 @@ class BoxesType extends AbstractType
     }
 }
 ```
+Dans le template 
+
+```twig
+{% form_theme form './form/jquery.collection.html.twig' %}
+{{ form_start(form) }}
+<div class="container bg-white">
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}
+```
+
+ajouter le script dans un fichier assets/js ou dans le base.html.twig :
+
+```
+    <script type="text/javascript">$('.picture').collection();</script>
+```
 
 
 
