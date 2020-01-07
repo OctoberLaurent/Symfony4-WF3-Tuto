@@ -99,7 +99,7 @@ Dans le template
 
 ajouter le script dans un fichier assets/js ou dans le base.html.twig :
 
-```
+```js
     <script type="text/javascript">$('.picture').collection();</script>
 ```
 
