@@ -42,7 +42,7 @@ Nous avons 2 entités, une entité product et une entité picture.
 Nous allons permettre d'ajouter plusieurs "pictures" à "product", via un formulaire.
 Il sera aussi possible de supprimer des "pictures" à "product" dans le formulaire d'édition ou dans le formualaire de création si vous avez ajouter l'élément par erreur.
 
-Modification de notre formulaire Producct.
+Modification de notre formulaire Product.
 ```php
 <?php
 
@@ -80,6 +80,46 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+        ]);
+    }
+}
+
+```
+Modification du formulaire pour Picture
+
+```php
+<?php
+
+namespace App\Form;
+
+use App\Entity\Pictures;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+class PicturesType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('name', TextType::class, [
+                'label' => 'Nom de l\'image',
+                'attr' => [ 'class' => 'form-control']
+            ])
+            ->add('url', TextType::class, [
+                'label' => 'adresse de l\'image',
+                'attr' => [ 'class' => 'form-control']
+            ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Pictures::class,
         ]);
     }
 }
