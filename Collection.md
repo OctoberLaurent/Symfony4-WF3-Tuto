@@ -125,8 +125,12 @@ class PicturesType extends AbstractType
 }
 
 ```
+Modification du controlleur pour la création d'un produit .
 
 ```php
+    
+    // ---- > ProductController.php
+    
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
@@ -160,6 +164,54 @@ class PicturesType extends AbstractType
             'product' => $product,
             'form' => $form->createView(),
         ]);
+    }
+```
+
+Modification du controlleur pour la modification d'un produit .
+
+```
+    /**
+     * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Product $product): Response
+    {
+        $originalPictures = new ArrayCollection();
+       
+        foreach ($product->getPicture() as $picture) {
+        $originalPictures->add($picture);
+        }
+
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $entityManager = $this->getDoctrine()->getManager();
+
+                foreach($product->getPicture() as $picture) {
+                $picture->setProduct($product);
+                
+                $entityManager->persist($picture);
+                }
+                
+                //*** Add this ***
+                foreach ($originalPictures as $picture) {
+
+                    if (false === $product->getPicture()->contains($picture)) {
+
+                    $picture->setProduct(null);
+                    
+                    $entityManager->persist($picture);
+                    
+                    }
+                }
+                //*** ****** ***
+               
+                $entityManager->persist($product);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('product_index');
+
     }
 ```
 
