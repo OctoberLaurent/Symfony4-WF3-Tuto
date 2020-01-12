@@ -323,5 +323,12 @@ Voici le fichier _form.html.twig modifié.
 </div>
 {{ form_end(form) }}
 ```
+Dans l'entité product.php ajouter en annotation à l'attribut picture :  cascade={"remove"} .
 
+```php
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Pictures", mappedBy="product", cascade={"remove"} )
+     */
+    private $picture;
+```
 
