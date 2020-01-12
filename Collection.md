@@ -272,6 +272,56 @@ $(document).ready(function () {
 });
 
 ```
+Voici le fichier _form.html.twig modifié.
+```twig
+<div class="container">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-6">
+            {{ form_label(form.name) }}
+        </div>
+        <div class="col-6">
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <div class="col-6">
+            {{ form_label(form.description) }}
+        </div>
+        <div class="col-6">
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+            <div class="col-6">
+            {{ form_label(form.price) }}
+        </div>
+        <div class="col-6">
+            {{ form_widget(form.price) }}
+            {{ form_errors(form.price) }}
+        </div>
+    </div>
 
+        {{ form_row(form.name) }}
+        {{ form_errors(form.name) }}
+        
+        <ul id="picture-fields-list"
+            data-prototype="{{ form_widget(form.picture.vars.prototype)|e }}"
+            data-widget-tags="{{ '<li></li>'|e }}"
+            data-widget-counter="{{ form.picture|length }}">
+        {% for pictureField in form.picture %}
+            <li>
+                    {{ form_row(pictureField.name) }}
+                    {{ form_row(pictureField.url) }}
+            </li>
+        {% endfor %}
+        </ul>
+
+        <button type="button"
+            class="add-another-collection-widget btn btn-primary"
+            data-list-selector="#picture-fields-list">Add another picture</button>
+
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}
+```
 
 
