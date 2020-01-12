@@ -38,6 +38,53 @@ Migrons les bases de données.
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
+Nous avons 2 entités, une entité product et une entité picture. 
+Nous allons permettre d'ajouter plusieurs "pictures" à "product", via un formulaire.
+Il sera aussi possible de supprimer des "pictures" à "product" dans le formulaire d'édition ou dans le formualaire de création si vous avez ajouter l'élément par erreur.
+
+Modification de notre formulaire Producct.
+```php
+<?php
+
+namespace App\Form;
+
+use App\Entity\Product;
+use App\Form\PicturesType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
+class ProductType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('name', TextType::class)
+            ->add('description', TextType::class)
+            ->add('price', NumberType::class)
+            ->add('picture', CollectionType::class , [
+                'entry_type' => PicturesType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'attr' => [ 'class' => 'form-group']
+            ]
+            )
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Product::class,
+        ]);
+    }
+}
+
+```
 
 
 
