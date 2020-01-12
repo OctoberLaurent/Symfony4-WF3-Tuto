@@ -215,6 +215,62 @@ Modification du controlleur pour la modification d'un produit .
     }
 ```
 
+Créer un fichier *add-collection-widget.js* pour gérer dynamiquement l'ajout et la suppression des champs.
+
+```js
+// add-collection-widget.js
+$(document).ready(function () {
+    
+    $('.add-another-collection-widget').click(function (e) {
+        var list = $($(this).attr('data-list-selector'));
+        
+        var counter = list.data('widget-counter') || list.children().length;
+  
+        var newWidget = list.attr('data-prototype');        
+
+        newWidget = newWidget.replace(/__name__/g, counter);
+        
+        newWidget += '<button type="button" class="delete btn btn-danger">Delete</button>';
+        
+        counter++;
+
+        list.data('widget-counter', counter);
+
+        var newElem = $(list.attr('data-widget-tags')).html(newWidget);
+        newElem.appendTo(list);
+
+        handleDelete()
+    });
+
+        collectionHolder = $('ul#picture-fields-list');
+        collectionHolder.find('li').each(function() {
+        
+        addPictureFormDeleteLink($(this));
+    });
+
+    function handleDelete(){
+
+        var elements = document.getElementsByClassName('delete');
+        elements.forEach(element => {
+             element.addEventListener('click', function (event) {
+                    this.parentNode.remove();
+                    });
+                                    });
+    }
+        
+    function addPictureFormDeleteLink($pictureFormLi) {
+        var $removeFormButton = $('<button type="button" class="delete btn btn-danger">Delete</button>');
+        $pictureFormLi.append($removeFormButton);
+
+        $removeFormButton.on('click', function(e) {
+            // remove the li for the Picture form
+            $pictureFormLi.remove();
+        });
+    }
+
+});
+
+```
 
 
 
