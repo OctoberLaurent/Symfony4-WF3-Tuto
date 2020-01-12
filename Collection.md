@@ -332,4 +332,4 @@ Dans l'entité product.php ajouter en annotation à l'attribut picture :  cascad
     private $picture;
 ```
 
-Rendez-vous sur le [le dépôt](https://gitlab.com/OctoberLaurent/collection) 
+Rendez-vous sur le [le dépôt](https://gitlab.com/OctoberLaurent/collection) pour les des éléments complémentaires.
