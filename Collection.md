@@ -170,7 +170,7 @@ Modification du controlleur pour la création d'un produit .
 Modification du controlleur pour la modification d'un produit .
 
 ```
-    /**
+    /** php
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Product $product): Response
