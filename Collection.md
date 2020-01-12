@@ -126,6 +126,43 @@ class PicturesType extends AbstractType
 
 ```
 
+```php
+    /**
+     * @Route("/new", name="product_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        // create a new product
+        $product = new Product();
+        // generate a form 
+        $form = $this->createForm(ProductType::class, $product);
+        // 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+                //*** Add this ***
+                // loop on all picture elements and persist all
+                foreach($product->getPicture() as $picture) {
+                $picture->setProduct($product);
+                $entityManager->persist($picture);
+                //*** ****** ***
+            }
+            // persist product
+            $entityManager->persist($product);
+            // Add product in database in unclude all picture
+            $entityManager->flush();
+
+            return $this->redirectToRoute('product_index');
+        }
+
+        return $this->render('product/new.html.twig', [
+            'product' => $product,
+            'form' => $form->createView(),
+        ]);
+    }
+```
+
 
 
 
